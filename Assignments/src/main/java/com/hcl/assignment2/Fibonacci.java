@@ -1,3 +1,4 @@
+package com.hcl.assignment2;
 import java.util.Scanner;
 public class Fibonacci {
     static Scanner scan = new Scanner(System.in);

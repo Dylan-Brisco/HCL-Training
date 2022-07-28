@@ -1,28 +1,42 @@
+package com.hcl.assignment2;
 import java.util.Scanner;
-public class Fibonacci {
+
+public class Primes {
+
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.print("Please enter the number you would like to go up to: ");
-        long input = getSafeLong(); // long to allow for higher values before overflow
+        System.out.print("Please Enter the number you would like to go up to: ");
+        int input = getSafeInt();
         System.out.println();
-        int fib0 = 0; // start conditions for fib sequence
-        int fib1 = 1;
         for(int i = 0; i < input; i++) {
-            System.out.print(Long.toUnsignedString(fib0) + " "); // allows for higher values.
-            int total = fib1 + fib0; //fib sequence is a,b, a+b (=c), b+c=(d), etc
-            fib0 = fib1;
-            fib1 = total;
+            if(isPrime(i)) {
+                System.out.print(i + " ");
+            }
         }
     }
-    public static long getSafeLong() { // error proof int input from user
+
+    public static boolean isPrime(int n) {
+        if (n == 0 || n == 1) { // 0 and 1 not prime
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            // only have to go up to sqrt n. If we don't have a factor before sqrt n, we won't have one after
+            if (n % i == 0) { // check for all factors from 2 -> sqrt(n)
+                return false;
+            }
+        }
+        return true; // no factors -> n is prime
+    }
+
+    public static int getSafeInt() { // error proof int input from user
         boolean invalidInput = true;
-        long num = 0;
+        int num = 0;
 
         while (invalidInput) {
             invalidInput = false; // if remains false we break
             try {
-                num = scan.nextLong(); //asks user for input
+                num = scan.nextInt(); //asks user for input
                 scan.nextLine();
                 if (num < 0){ // if input is out of bounds throw exception
                     throw new InputOutOfBoundsException();
