@@ -1,4 +1,6 @@
-package com.hcl.assignment6;
+package com.hcl.assignment5;
+
+import com.hcl.assignment5.Employee;
 
 import java.util.*;
 import java.util.stream.Collectors;

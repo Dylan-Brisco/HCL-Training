@@ -1,4 +1,4 @@
-package com.hcl.assignment6;
+package com.hcl.assignment5;
 
 public class Employee {
     int id;
